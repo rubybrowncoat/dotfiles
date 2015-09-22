@@ -7,6 +7,7 @@ export EDITOR='atom -w'
 #########################################################################
 export MYTEMP=~/Documents/Temp
 export MYCODE=~/Documents/Code
+export MYWORK=~/Work
 export MYSCRATCH=~/Documents/Temp/Scratch
 export MYDOWNLOADS=~/Downloads
 export MYDOCUMENTS=~/Documents

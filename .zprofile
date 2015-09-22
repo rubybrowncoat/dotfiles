@@ -18,6 +18,3 @@ setopt    incappendhistory  #Immediately append to the history file, not just wh
 # z setup
 ##############################################################################
 . ~/.dotfiles/z/z.sh
-function precmd () {
-  z --add "$(pwd -P)"
-}

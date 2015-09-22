@@ -195,7 +195,7 @@ brew tap caskroom/versions > /dev/null 2>&1
 # cloud storage
 #require_cask amazon-cloud-drive
 require_cask box-sync
-#require_cask dropbox
+require_cask dropbox
 #require_cask evernote
 #require_cask skydrive
 

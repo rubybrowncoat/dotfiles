@@ -10,6 +10,7 @@
 #########################################
 # Commands to change dirs
 alias to.temp='cd ${MYTEMP}'
+alias to.work='cd ${MYWORK}'
 alias to.downloads='cd ${MYDOWNLOADS}'
 alias to.dropbox='cd ~/Dropbox'
 alias to.docs='cd ${MYDOCUMENTS}'
