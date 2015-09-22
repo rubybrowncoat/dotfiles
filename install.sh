@@ -5,8 +5,8 @@
 # @author Adam Eivy
 ###########################
 
-DEFAULT_EMAIL="atomantic@gmail.com"
-DEFAULT_GITHUBUSER="atomantic"
+DEFAULT_EMAIL="browncoat@nerdship.net"
+DEFAULT_GITHUBUSER="rubybrowncoat"
 
 
 # include my library helpers for colorized echo and require_brew, etc
@@ -65,7 +65,7 @@ if [[ $response =~ ^(no|n|N) ]];then
   fi
 fi
 
-grep 'user = atomantic' .gitconfig
+grep 'user = rubybrowncoat' .gitconfig
 if [[ $? = 0 ]]; then
     read -r -p "What is your github.com username? [$DEFAULT_GITHUBUSER]" githubuser
 fi
@@ -77,20 +77,20 @@ running "replacing items in .gitconfig with your info ($COL_YELLOW$fullname, $em
 
 # test if gnu-sed or osx sed
 
-sed -i 's/Adam Eivy/'$firstname' '$lastname'/' .gitconfig > /dev/null 2>&1 | true
+sed -i 's/Matsor Browncoat/'$firstname' '$lastname'/' .gitconfig > /dev/null 2>&1 | true
 if [[ ${PIPESTATUS[0]} != 0 ]]; then
   echo
   running "looks like you are using OSX sed rather than gnu-sed, accommodating"
-  sed -i '' 's/Adam Eivy/'$firstname' '$lastname'/' .gitconfig;
-  sed -i '' 's/adam.eivy@disney.com/'$email'/' .gitconfig;
-  sed -i '' 's/atomantic/'$githubuser'/' .gitconfig;
-  sed -i '' 's/antic/'$(whoami)'/g' .zshrc;ok
+  sed -i '' 's/Matsor Browncoat/'$firstname' '$lastname'/' .gitconfig;
+  sed -i '' 's/browncoat@nerdship.net/'$email'/' .gitconfig;
+  sed -i '' 's/rubybrowncoat/'$githubuser'/' .gitconfig;
+  sed -i '' 's/browncoat/'$(whoami)'/g' .zshrc;ok
 else
   echo
   bot "looks like you are already using gnu-sed. woot!"
-  sed -i 's/adam.eivy@disney.com/'$email'/' .gitconfig;
-  sed -i 's/atomantic/'$githubuser'/' .gitconfig;
-  sed -i 's/antic/'$(whoami)'/g' .zshrc;ok
+  sed -i 's/browncoat@nerdship.net/'$email'/' .gitconfig;
+  sed -i 's/rubybrowncoat/'$githubuser'/' .gitconfig;
+  sed -i 's/browncoat/'$(whoami)'/g' .zshrc;ok
 fi
 
 # read -r -p "OK? [Y/n] " response

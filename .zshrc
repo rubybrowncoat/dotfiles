@@ -5,11 +5,11 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 # Look in $ZSH/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-export ZSH_THEME="pygmalion"
+export ZSH_THEME="dracula"
 #export ZSH_THEME="random"
 
 # Set to this to use case-sensitive completion
-export CASE_SENSITIVE="true"
+export CASE_SENSITIVE="false"
 
 # Comment this out to disable weekly auto-update checks
 # export DISABLE_AUTO_UPDATE="true"
