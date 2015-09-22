@@ -90,3 +90,4 @@ node_modules
 .vim/.netrwhist
 .atom/packages/
 .atom/storage/
+.atom/compile-cache
