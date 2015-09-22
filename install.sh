@@ -112,6 +112,7 @@ pushd ~ > /dev/null 2>&1
 
 bot "creating symlinks for project dotfiles..."
 
+symlinkifne .atom
 symlinkifne .crontab
 symlinkifne .gemrc
 symlinkifne .gitconfig

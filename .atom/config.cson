@@ -1,0 +1,38 @@
+"*":
+  "exception-reporting":
+    userId: "e43a0051-8798-d366-df21-2056a6574c47"
+  welcome:
+    showOnStartup: false
+  core:
+    themes: [
+      "dracula-ui"
+      "dracula-theme"
+    ]
+  editor:
+    invisibles: {}
+    showIndentGuide: true
+    softWrap: true
+    fontSize: 12
+  "atom-material-ui":
+    compactTreeView: true
+    depth: true
+    fontSize: "Small"
+    rippleAccentColor: true
+    panelContrast: true
+    useRoboto: true
+    tabSize: "Small"
+    showTabIcons: "Show on active tab"
+    accentColor: "Pink"
+  linter:
+    showErrorTabLine: true
+  "autocomplete-plus": {}
+  "linter-php": {}
+  "linter-scss-lint":
+    executablePath: "/usr/bin/scss-lint"
+  "atom-beautify": {}
+  "file-icons":
+    onChanges: true
+  "linter-htmlhint": {}
+  "linter-jshint":
+    lintInlineJavaScript: true
+  "merge-conflicts": {}

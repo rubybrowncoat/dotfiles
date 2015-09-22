@@ -35,6 +35,7 @@ function updatedotfile {
     fi
 }
 
+updatedotfile .atom
 updatedotfile .crontab
 updatedotfile .gemrc
 updatedotfile .gitconfig

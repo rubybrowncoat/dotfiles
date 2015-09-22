@@ -88,3 +88,5 @@ node_modules
 .vim/backup/*
 .vim/temp/*
 .vim/.netrwhist
+.atom/packages/
+.atom/storage/
