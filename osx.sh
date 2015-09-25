@@ -179,13 +179,13 @@ require_npm trash
 require_npm vtop
 
 ###############################################################################
-bot "Ruby Gems..."
+bot "Ruby and Ruby Gems..."
 ###############################################################################
 require_brew rbenv
 require_brew ruby-build
 eval "$(rbenv init -)"
 
-rbenv install 2.2.3
+rbenv install --skip-existing 2.2.3
 rbenv global 2.2.3
 
 require_gem git-up
@@ -214,7 +214,7 @@ require_cask slack
 #require_cask comicbooklover
 require_cask diffmerge
 #require_cask flash-player
-require_cask github
+require_cask github-desktop
 require_cask gpgtools
 #require_cask ireadfast
 require_cask iterm2
