@@ -184,7 +184,12 @@ bot "Ruby Gems..."
 require_brew rbenv
 require_brew ruby-build
 eval "$(rbenv init -)"
+
+rbenv install 2.2.3
+rbenv global 2.2.3
+
 require_gem git-up
+require_gem scss_lint
 
 ###############################################################################
 # Native Apps (via brew cask)                                                 #
@@ -194,7 +199,7 @@ brew tap caskroom/versions > /dev/null 2>&1
 
 # cloud storage
 #require_cask amazon-cloud-drive
-require_cask box-sync
+#require_cask box-sync
 require_cask dropbox
 #require_cask evernote
 #require_cask skydrive
@@ -203,7 +208,7 @@ require_cask dropbox
 #require_cask adium
 require_cask slack
 
-# require_cask caffeine
+#require_cask caffeine
 
 # tools
 #require_cask comicbooklover
@@ -211,30 +216,42 @@ require_cask diffmerge
 #require_cask flash-player
 require_cask github
 require_cask gpgtools
-# require_cask ireadfast
+#require_cask ireadfast
 require_cask iterm2
 #require_cask macvim
 require_cask sizeup
 #require_cask simple-comic
 #require_cask sketchup
 
+# atom
 require_cask atom
+
 require_apm linter
 require_apm linter-eslint
-require_apm atom-beautify
+require_apm linter-php
+require_apm linter-scss-lint
 
+require_apm project-manager
+require_apm atom-beautify
+require_apm file-icons
+require_apm terminal-plus
+
+require_apm dracula-ui
+require_apm dracula-theme
+
+# generic
 require_cask the-unarchiver
 require_cask transmission
 require_cask vlc
 require_cask xquartz
 
 # development browsers
-# require_cask breach
-# require_cask firefox
-#require_cask firefox-aurora
+#require_cask breach
+require_cask firefox
+require_cask firefoxdeveloperedition
 require_cask google-chrome
 require_cask google-chrome-canary
-# require_cask torbrowser
+#require_cask torbrowser
 
 # virtal machines
 require_cask virtualbox
