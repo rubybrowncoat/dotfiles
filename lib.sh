@@ -39,6 +39,15 @@ function error() {
     echo -e "$COL_RED[ er ]$COL_RESET "$1
 }
 
+function require_dock() {
+  running "dockutil $@"
+  python dockutil/scripts/dockutil --add "~/Applications/$@.app" --label "$@" --replacing "$@" --section apps
+  if [[ $? != 0 ]]; then
+    error "failed to add $1 to dock"
+  fi
+  ok
+}
+
 function require_cask() {
     running "brew cask $1"
     brew cask list $1 > /dev/null 2>&1 | true
@@ -147,7 +156,7 @@ function symlinkifne {
         # file exists
         if [[ -L $1 ]]; then
             # it's already a simlink (could have come from this project)
-            echo -en '\tsimlink exists, skipped\t';ok
+            echo -en 'simlink exists, skipped ';ok
             return
         fi
         # backup file does not exist yet

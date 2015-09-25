@@ -60,14 +60,14 @@ brew update
 ok
 
 bot "before installing brew packages, we can upgrade any outdated packages."
-read -r -p "run brew upgrade? [y|N] " response
-if [[ $response =~ ^(y|yes|Y) ]];then
-    # Upgrade any already-installed formulae
-    action "upgrade brew packages..."
-    brew upgrade
-    ok "brews updated..."
+read -r -p "run brew upgrade? [Y|n] " response
+if [[ $response =~ ^(n|no|N) ]];then
+  ok "skipped brew package upgrades.";
 else
-    ok "skipped brew package upgrades.";
+  # Upgrade any already-installed formulae
+  action "upgrade brew packages..."
+  brew upgrade
+  ok "brews updated..."
 fi
 
 bot "installing homebrew command-line tools"
@@ -194,78 +194,98 @@ require_gem scss_lint
 ###############################################################################
 # Native Apps (via brew cask)                                                 #
 ###############################################################################
-bot "installing GUI tools via homebrew casks..."
+bot "Installing GUI tools via homebrew casks..."
 brew tap caskroom/versions > /dev/null 2>&1
 
-# cloud storage
+# CLOUD STORAGE
 #require_cask amazon-cloud-drive
 #require_cask box-sync
-require_cask dropbox
 #require_cask evernote
 #require_cask skydrive
+require_cask dropbox
 
-# communication
+# COMMUNICATION
 #require_cask adium
+
 require_cask slack
+require_cask skype
 
+# TOOLS
 #require_cask caffeine
-
-# tools
-#require_cask comicbooklover
-require_cask diffmerge
-#require_cask flash-player
-require_cask github-desktop
-require_cask gpgtools
-#require_cask ireadfast
-require_cask iterm2
 #require_cask macvim
-require_cask sizeup
+#require_cask comicbooklover
+#require_cask flash-player
+#require_cask ireadfast
 #require_cask simple-comic
 #require_cask sketchup
+require_cask diffmerge
+require_cask gpgtools
+require_cask sizeup
 
-# atom
+require_cask github-desktop
+require_cask iterm2
+require_cask sequel-pro
+
+# ATOM
 require_cask atom
 
 require_apm linter
 require_apm linter-eslint
 require_apm linter-php
 require_apm linter-scss-lint
-
 require_apm project-manager
 require_apm atom-beautify
 require_apm file-icons
 require_apm terminal-plus
-
 require_apm dracula-ui
 require_apm dracula-theme
 
-# generic
+# GENERIC
 require_cask the-unarchiver
 require_cask transmission
 require_cask vlc
 require_cask xquartz
 
-# development browsers
+# DEVELOPMENT BROWSERS
 #require_cask breach
+#require_cask torbrowser
+
 require_cask firefox
 require_cask firefoxdeveloperedition
 require_cask google-chrome
 require_cask google-chrome-canary
-#require_cask torbrowser
 
-# virtal machines
+# VIRTUAL MACHINE
 require_cask virtualbox
+require_cask vagrant # # | grep Caskroom | sed "s/.*'\(.*\)'.*/open \1\/Vagrant.pkg/g" | sh
 # chef-dk, berkshelf, etc
 #require_cask chefdk
-# vagrant for running dev environments using docker images
-#require_cask vagrant # # | grep Caskroom | sed "s/.*'\(.*\)'.*/open \1\/Vagrant.pkg/g" | sh
-
 
 
 # bot "Alright, cleaning up homebrew cache..."
 # Remove outdated versions from the cellar
 # brew cleanup > /dev/null 2>&1
 # bot "All clean"
+
+###############################################################################
+# Native Apps Dock Shortcuts                                                  #
+###############################################################################
+bot "Installing Dock Shortcuts via dockutil..."
+
+require_dock "Google Chrome"
+require_dock "Firefox"
+require_dock "Google Chrome Canary"
+require_dock "FirefoxDeveloperEdition"
+
+require_dock "Slack"
+require_dock "Skype"
+
+require_dock "Atom"
+
+require_dock "GitHub Desktop"
+require_dock "Sequel Pro"
+
+require_dock "iTerm"
 
 ###############################################################################
 bot "Configuring General System UI/UX..."
@@ -660,11 +680,14 @@ defaults write com.apple.dock showhidden -bool true;ok
 running "Make Dock more transparent"
 defaults write com.apple.dock hide-mirror -bool true;ok
 
+running "Make Dock use scroll gestures to open stacks or show application Exposé"
+defaults write com.apple.dock scroll-to-open -bool true;ok
+
 running "Reset Launchpad, but keep the desktop wallpaper intact"
 find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete;ok
 
 running "Add iOS Simulator to Launchpad"
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app" "/Applications/iOS Simulator.app";ok
+sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/iOS Simulator.app";ok
 
 
 # bot "Configuring Hot Corners"
