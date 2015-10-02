@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-###########################
-# This script restores backed up dotfiles
-# @author Adam Eivy
-###########################
-
 # include my library helpers for colorized echo and require_brew, etc
 source ./lib.sh
 

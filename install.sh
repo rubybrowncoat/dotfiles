@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-###########################
-# This script installs the dotfiles and runs all other system configuration scripts
-# @author Adam Eivy
-###########################
-
 DEFAULT_EMAIL="browncoat@nerdship.net"
 DEFAULT_GITHUBUSER="rubybrowncoat"
 

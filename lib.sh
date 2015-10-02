@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-###
-# some bash library helpers
-# @author Adam Eivy
-###
-
 # Colors
 ESC_SEQ="\x1b["
 COL_RESET=$ESC_SEQ"39;49;00m"
