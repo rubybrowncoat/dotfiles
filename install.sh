@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Original by Adam Eivy
+## Forked by Matsor Browncoat
+
 DEFAULT_EMAIL="browncoat@nerdship.net"
 DEFAULT_GITHUBUSER="rubybrowncoat"
 
@@ -10,6 +13,15 @@ source ./lib.sh
 # make a backup directory for overwritten dotfiles
 if [[ ! -e ~/.dotfiles_backup ]]; then
     mkdir ~/.dotfiles_backup
+fi
+
+# move custom theme to oh-my-zsh module
+if [[ ! -e ~/.dotfiles/oh-my-zsh/custom/themes/dracula.zsh-theme ]]; then
+  if [[ ! -e ~/.dotfiles/oh-my-zsh/custom/themes ]]; then
+    mkdir ~/.dotfiles/oh-my-zsh/custom/themes
+  fi
+
+  cp ~/.dotfiles/custom/themes/dracula.zsh-theme ~/.dotfiles/oh-my-zsh/custom/themes/dracula.zsh-theme
 fi
 
 bot "Hi. I'm going to make your OSX system better. But first, I need to configure this project based on your info so you don't check in files to github as Adam Eivy from here on out :)"
