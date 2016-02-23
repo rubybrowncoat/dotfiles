@@ -8,14 +8,19 @@ source ./lib.sh
 bot "checking sudo state..."
 if sudo grep -q "# %wheel\tALL=(ALL) NOPASSWD: ALL" "/etc/sudoers"; then
 
-  promptSudo
+  # Ask for the administrator password upfront
+  bot "I need you to enter your sudo password so I can install some things:"
+  sudo -v
+
+  # Keep-alive: update existing sudo time stamp until the script has finished
+  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
   bot "Do you want me to setup this machine to allow you to run sudo without a password?\nPlease read here to see what I am doing:\nhttp://wiki.summercode.com/sudo_without_a_password_in_mac_os_x \n"
 
   read -r -p "Make sudo passwordless? [y|N] " response
 
   if [[ $response =~ (yes|y|Y) ]];then
-      sed --version
+      sed --version 2>&1 > /dev/null
       if [[ $? == 0 ]];then
           sudo sed -i 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
       else
@@ -35,10 +40,11 @@ running "checking homebrew install"
 brew_bin=$(which brew) 2>&1 > /dev/null
 if [[ $? != 0 ]]; then
 	action "installing homebrew"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    if [[ $? != 0 ]]; then
-    	error "unable to install homebrew, script $0 abort!"
-    	exit -1
+  xcode-select --install
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  if [[ $? != 0 ]]; then
+  	error "unable to install homebrew, script $0 abort!"
+  	exit -1
 	fi
 fi
 ok
@@ -79,7 +85,33 @@ require_brew coreutils
 # Install some other useful utilities like `sponge`
 require_brew moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
-require_brew findutils
+require_brew findutils --with-default-names
+# Install GNU diff Utilities
+require_brew diffutils
+
+# Install GNU `sed`, overwriting the built-in `sed`
+# so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
+require_brew gnu-sed --with-default-names
+
+# other tools per: http://apple.stackexchange.com/questions/69223/how-to-replace-mac-os-x-utilities-with-gnu-core-utilities
+require_brew gnu-indent --with-default-names
+require_brew gnutls
+require_brew gnu-tar --with-default-names
+require_brew gnu-getopt --with-default-names
+require_brew gnu-which --with-default-names
+require_brew gawk
+
+# better, more recent grep
+require_brew grep --with-default-names
+
+# other tools
+require_brew gzip
+require_brew make
+require_brew less
+require_brew openssh
+require_brew rsync
+require_brew unzip
+require_brew file-formula
 
 # Install Bash 4
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
@@ -99,13 +131,13 @@ require_brew ack
 # launchctl load ~/Library/LaunchAgents/homebrew.mxcl.beanstalk.plist
 
 # docker setup:
-require_brew boot2docker
+# note, instead, use https://github.com/atomantic/generator-dockerize for dev tooling
+# require_brew boot2docker
 
 # dos2unix converts windows newlines to unix newlines
 require_brew dos2unix
 # fortune command--I source this as a better motd :)
 require_brew fortune
-require_brew gawk
 # http://www.lcdf.org/gifsicle/ (because I'm a gif junky)
 require_brew gifsicle
 # skip those GUI clients, git command-line all the way
@@ -114,27 +146,18 @@ require_brew git
 require_brew git-flow
 # why is everyone still not using GPG?
 require_brew gnupg
-# Install GNU `sed`, overwriting the built-in `sed`
-# so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
-require_brew gnu-sed --with-default-names
 require_brew go
-# better, more recent grep
-require_brew homebrew/dupes/grep
-require_brew hub
 require_brew imagemagick
 require_brew imagesnap
 # jq is a JSON grep
 require_brew jq
 # http://maven.apache.org/
 require_brew maven
-require_brew memcached
 require_brew nmap
 # require_brew node
 require_brew nvm
-require_brew redis
 # better/more recent version of screen
 require_brew homebrew/dupes/screen
-require_brew tig
 require_brew tree
 require_brew ttyrec
 # better, more recent vim
@@ -142,11 +165,6 @@ require_brew vim --override-system-vi
 require_brew watch
 # Install wget with IRI support
 require_brew wget --enable-iri
-
-bot "if you would like to start memcached at login, run this:"
-echo "ln -sfv /usr/local/opt/memcached/*.plist ~/Library/LaunchAgents"
-bot "if you would like to start memcached now, run this:"
-echo "launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist"
 
 # nvm
 require_nvm stable
@@ -156,6 +174,7 @@ bot "NPM Globals..."
 ###############################################################################
 
 require_npm antic
+require_npm buzzphrase
 require_npm bower
 require_npm bower-check-updates
 require_npm npm-check
@@ -181,9 +200,10 @@ require_npm vtop
 ###############################################################################
 bot "Ruby and Ruby Gems..."
 ###############################################################################
-require_brew rbenv
-require_brew ruby-build
-eval "$(rbenv init -)"
+sudo chown -R $(whoami) /Library/Ruby/Gems/2.0.0
+# require_brew rbenv
+# require_brew ruby-build
+# eval "$(rbenv init -)"
 
 rbenv install --skip-existing 2.2.3
 rbenv global 2.2.3
@@ -201,7 +221,6 @@ brew tap caskroom/versions > /dev/null 2>&1
 #require_cask amazon-cloud-drive
 #require_cask box-sync
 #require_cask evernote
-#require_cask skydrive
 require_cask dropbox
 
 # COMMUNICATION
@@ -211,7 +230,6 @@ require_cask slack
 require_cask skype
 
 # TOOLS
-#require_cask caffeine
 #require_cask macvim
 #require_cask comicbooklover
 #require_cask flash-player
@@ -246,6 +264,9 @@ require_cask transmission
 require_cask vlc
 require_cask xquartz
 
+require_cask asepsis
+require_cask cheatsheet
+
 # DEVELOPMENT BROWSERS
 #require_cask breach
 #require_cask torbrowser
@@ -261,11 +282,22 @@ require_cask vagrant # # | grep Caskroom | sed "s/.*'\(.*\)'.*/open \1\/Vagrant.
 # chef-dk, berkshelf, etc
 #require_cask chefdk
 
+# QUICKLOOK PLUGINS
+bot "Installing Quicklook plugins..."
+require_cask qlcolorcode
+require_cask qlstephen
+require_cask qlmarkdown
+require_cask quicklook-json
+require_cask qlprettypatch
+require_cask quicklook-csv
+require_cask betterzipql
+require_cask qlimagesize
 
-# bot "Alright, cleaning up homebrew cache..."
+bot "Alright, cleaning up homebrew cache..."
 # Remove outdated versions from the cellar
-# brew cleanup > /dev/null 2>&1
-# bot "All clean"
+brew cleanup > /dev/null 2>&1
+bot "All clean"
+
 
 ###############################################################################
 # Native Apps Dock Shortcuts                                                  #
@@ -286,6 +318,20 @@ require_dock "GitHub Desktop"
 require_dock "Sequel Pro"
 
 require_dock "iTerm"
+
+
+###############################################################################
+bot "Standard System Changes"
+###############################################################################
+
+# running "Set computer name (as done via System Preferences → Sharing)"
+running "Set computer name to: serenity"
+sudo scutil --set ComputerName "Serenity Valley"
+sudo scutil --set HostName "serenity"
+sudo scutil --set LocalHostName "SerenityValley"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "serenity"
+dscacheutil -flushcache
+
 
 ###############################################################################
 bot "Configuring General System UI/UX..."

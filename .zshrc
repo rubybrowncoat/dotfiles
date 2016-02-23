@@ -22,7 +22,7 @@ export CASE_SENSITIVE="false"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bower brew cloudapp colorize compleat dirpersist gem git git-flow github osx mvn node npm nvm rvm ssh-agent vagrant)
+plugins=(bower brew colorize compleat dirpersist gem git git-flow github osx mvn node npm nvm ssh-agent vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -31,12 +31,6 @@ source /usr/local/opt/nvm/nvm.sh
 
 # Customize to your needs...
 unsetopt correct
-
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-export PATH="/Users/"$(whoami)"/.rbenv/shims:${PATH}"
-source "/usr/local/Cellar/rbenv/0.4.0/libexec/../completions/rbenv.zsh"
-rbenv rehash 2>/dev/null
 
 nvm use stable
 # run fortune on new terminal :)

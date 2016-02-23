@@ -104,21 +104,6 @@ function docker-ip() {
   boot2docker ip 2> /dev/null
 }
 
-rbenv() {
-  typeset command
-  command="$1"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
-
-  case "$command" in
-  rehash|shell)
-    eval `rbenv "sh-$command" "$@"`;;
-  *)
-    command rbenv "$command" "$@";;
-  esac
-}
-
 ## curlheader will return the header value specified for a given URL
 ## usage: curlheader ${header} ${url}
 ## or get all headers
@@ -142,4 +127,27 @@ function curlhammer () {
     curl -k -s -D - $1 -o /dev/null | grep 'HTTP/1.1' | sed 's/HTTP\/1.1 //'
   done
   bot "done"
+}
+
+
+brew-cask-upgrade() {
+  if [ "$1" != '--continue' ]; then
+    echo "Removing brew cache"
+    rm -rf "$(brew --cache)"
+    echo "Running brew update"
+    brew update
+  fi
+  for c in $(brew cask list); do
+    echo -e "\n\nInstalled versions of $c: "
+    ls /opt/homebrew-cask/Caskroom/$c
+    echo "Cask info for $c"
+    brew cask info $c
+    select ynx in "Yes" "No" "Exit"; do
+      case $ynx in
+        "Yes") echo "Uninstalling $c"; brew cask uninstall --force "$c"; echo "Re-installing $c"; brew cask install "$c"; break;;
+        "No") echo "Skipping $c"; break;;
+        "Exit") echo "Exiting brew-cask-upgrade"; return;;
+      esac
+    done
+  done
 }

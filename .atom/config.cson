@@ -1,38 +1,46 @@
 "*":
-  "exception-reporting":
-    userId: "e43a0051-8798-d366-df21-2056a6574c47"
-  welcome:
-    showOnStartup: false
+  "atom-beautify":
+    _analyticsUserId: "b0709f37-e086-4d91-b191-a3be6e83faa3"
+  "atom-material-ui":
+    accentColor: "Pink"
+    compactTreeView: true
+    depth: true
+    fontSize: "Small"
+    panelContrast: true
+    rippleAccentColor: true
+    showTabIcons: "Show on active tab"
+    tabSize: "Small"
+    useRoboto: true
+  "autocomplete-plus": {}
   core:
     themes: [
       "dracula-ui"
       "dracula-theme"
     ]
   editor:
+    fontSize: 12
     invisibles: {}
     showIndentGuide: true
     softWrap: true
-    fontSize: 12
-  "atom-material-ui":
-    compactTreeView: true
-    depth: true
-    fontSize: "Small"
-    rippleAccentColor: true
-    panelContrast: true
-    useRoboto: true
-    tabSize: "Small"
-    showTabIcons: "Show on active tab"
-    accentColor: "Pink"
-  linter:
-    showErrorTabLine: true
-  "autocomplete-plus": {}
-  "linter-php": {}
-  "linter-scss-lint":
-    executablePath: "/usr/bin/scss-lint"
-  "atom-beautify": {}
+  "exception-reporting":
+    userId: "e43a0051-8798-d366-df21-2056a6574c47"
   "file-icons":
     onChanges: true
+  "language-elm":
+    autocompleteEnabled: false
+    elmOraclePath: "/Users/browncoat/.dotfiles/.atom/packages/language-elm/node_modules/elm-oracle/bin/elm-oracle"
+  linter:
+    showErrorTabLine: true
+  "linter-eslint":
+    globalNodePath: "/Users/browncoat/.nvm/versions/node/v5.4.1"
+    useGlobalEslint: true
   "linter-htmlhint": {}
   "linter-jshint":
     lintInlineJavaScript: true
+  "linter-php": {}
+  "linter-scss-lint":
+    executablePath: "/usr/bin/scss-lint"
+  "markdown-preview-plus": {}
   "merge-conflicts": {}
+  welcome:
+    showOnStartup: false
