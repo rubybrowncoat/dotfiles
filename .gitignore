@@ -95,3 +95,4 @@ node_modules
 .atom/.node-gyp
 .atom/.apm/.apmrc
 .atom/projects.cson
+.atom/blob-store
