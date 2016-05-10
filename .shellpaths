@@ -9,6 +9,9 @@ export PATH=/usr/local/bin:$PATH
 # GO
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
-# PHP
-export MAMP_PHP=/Applications/MAMP/bin/php/php5.6.10/bin
-export PATH="$MAMP_PHP:$PATH"
+# COMPOSER
+export PATH=$PATH:~/.composer/vendor/bin
+
+# PHP # MAMP
+# export MAMP_PHP=/Applications/MAMP/bin/php/php5.6.10/bin
+# export PATH="$MAMP_PHP:$PATH"

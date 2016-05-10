@@ -1,6 +1,6 @@
 [user]
 	name = Matsor Browncoat
-	email = browncoat@nerdship.net
+	email = prunkstation@gmail.com
 [github]
     # https://github.com/blog/180-local-github-config
     user = rubybrowncoat
@@ -169,7 +169,7 @@
     templatedir = ~/.dotfiles/.git_template
 [mergetool]
 	prompt = false
-	keepBackup = false
+	keepBackup = true
 [difftool "diffmerge"]
 	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [mergetool "diffmerge"]

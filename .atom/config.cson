@@ -1,6 +1,7 @@
 "*":
   "atom-beautify":
-    _analyticsUserId: "b0709f37-e086-4d91-b191-a3be6e83faa3"
+    general:
+      _analyticsUserId: "07038a7f-beb9-4ebf-ac40-421d10deb4b5"
   "atom-material-ui":
     accentColor: "Pink"
     compactTreeView: true
@@ -13,12 +14,16 @@
     useRoboto: true
   "autocomplete-plus": {}
   core:
+    disabledPackages: [
+      "linter-scss-lint"
+      "linter-eslint"
+    ]
     themes: [
       "dracula-ui"
       "dracula-theme"
     ]
   editor:
-    fontSize: 12
+    fontSize: 13
     invisibles: {}
     showIndentGuide: true
     softWrap: true
@@ -32,7 +37,7 @@
   linter:
     showErrorTabLine: true
   "linter-eslint":
-    globalNodePath: "/Users/browncoat/.nvm/versions/node/v5.4.1"
+    globalNodePath: "/Users/browncoat/.nvm/versions/node/v5.9.0"
     useGlobalEslint: true
   "linter-htmlhint": {}
   "linter-jshint":

@@ -160,11 +160,28 @@ require_brew nvm
 require_brew homebrew/dupes/screen
 require_brew tree
 require_brew ttyrec
+# utilities
+require_brew yank
+require_brew thefuck
 # better, more recent vim
 require_brew vim --override-system-vi
 require_brew watch
 # Install wget with IRI support
 require_brew wget --enable-iri
+
+
+# Install composer
+require_brew composer
+
+
+# Install php, mariadb and valet
+require_brew homebrew/php/php70
+require_brew mariadb
+require_brew mycli
+
+composer global require laravel/valet
+valet install
+
 
 # nvm
 require_nvm stable
@@ -173,6 +190,7 @@ require_nvm stable
 bot "NPM Globals..."
 ###############################################################################
 
+require_npm how2
 require_npm antic
 require_npm buzzphrase
 require_npm bower
@@ -181,10 +199,10 @@ require_npm npm-check
 # http://ionicframework.com/
 # require_npm cordova
 # require_npm ionic
-require_npm yo
+# require_npm yo
 # https://github.com/markdalgleish/bespoke.js
-require_npm generator-bespoke
-require_npm generator-dockerize
+# require_npm generator-bespoke
+# require_npm generator-dockerize
 # require_npm grunt
 require_npm gulp
 require_npm eslint
@@ -205,8 +223,8 @@ sudo chown -R $(whoami) /Library/Ruby/Gems/2.0.0
 # require_brew ruby-build
 # eval "$(rbenv init -)"
 
-rbenv install --skip-existing 2.2.3
-rbenv global 2.2.3
+# rbenv install --skip-existing 2.2.3
+# rbenv global 2.2.3
 
 require_gem git-up
 require_gem scss_lint
@@ -264,7 +282,7 @@ require_cask transmission
 require_cask vlc
 require_cask xquartz
 
-require_cask asepsis
+# require_cask asepsis
 require_cask cheatsheet
 
 # DEVELOPMENT BROWSERS
@@ -677,6 +695,9 @@ bot "Dock & Dashboard"
 
 running "Enable highlight hover effect for the grid view of a stack (Dock)"
 defaults write com.apple.dock mouse-over-hilite-stack -bool true;ok
+
+running "Add a list of Recently Used applications shortcuts"
+defaults write com.apple.dock persistent-others -array-add '{ "tile-data" = { "list-type" = 1; }; "tile-type" = "recents-tile"; }';ok
 
 running "Set the icon size of Dock items to 36 pixels"
 defaults write com.apple.dock tilesize -int 36;ok
