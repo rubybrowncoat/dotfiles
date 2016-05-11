@@ -903,7 +903,7 @@ bot "Terminal & iTerm2"
 #defaults write org.x.X11 wm_ffm -bool true;ok
 
 running "Installing the Dracula theme for iTerm (opening file)"
-open "./configs/Dracula.itermcolors";ok
+open "./dracula-theme/iterm/Dracula.itermcolors";ok
 
 running "Don’t display the annoying prompt when quitting iTerm"
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
