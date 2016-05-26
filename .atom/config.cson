@@ -14,9 +14,23 @@
     useRoboto: true
   "autocomplete-plus": {}
   core:
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".flowconfig"
+      ]
+      "source.json": [
+        ".arcconfig"
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
     disabledPackages: [
       "linter-scss-lint"
       "linter-eslint"
+      "tree-view"
+      "linter"
     ]
     themes: [
       "dracula-ui"
@@ -31,6 +45,8 @@
     userId: "e43a0051-8798-d366-df21-2056a6574c47"
   "file-icons":
     onChanges: true
+  "file-watcher":
+    promptWhenFileHasChangedOnDisk: false
   "language-elm":
     autocompleteEnabled: false
     elmOraclePath: "/Users/browncoat/.dotfiles/.atom/packages/language-elm/node_modules/elm-oracle/bin/elm-oracle"
@@ -47,5 +63,19 @@
     executablePath: "/usr/bin/scss-lint"
   "markdown-preview-plus": {}
   "merge-conflicts": {}
+  nuclide:
+    installRecommendedPackages: true
+    "nuclide-adb-logcat": {}
+    "nuclide-buck": {}
+    "nuclide-file-tree": {}
+    "nuclide-flow":
+      enableStructuredTypeHints: true
+    "nuclide-home":
+      showHome: false
+  "tool-bar":
+    position: "Left"
   welcome:
     showOnStartup: false
+".ansi.text":
+  editor:
+    showInvisibles: false
