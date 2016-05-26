@@ -28,9 +28,6 @@
       ]
     disabledPackages: [
       "linter-scss-lint"
-      "linter-eslint"
-      "tree-view"
-      "linter"
     ]
     themes: [
       "dracula-ui"

@@ -88,7 +88,12 @@ require_brew moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 require_brew findutils --with-default-names
 # Install GNU diff Utilities
-require_brew diffutils
+# require_brew diffutils
+
+# Fontconfig, shell and ruby
+require_brew fontconfig
+require_brew zsh
+require_brew ruby
 
 # Install GNU `sed`, overwriting the built-in `sed`
 # so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
@@ -103,16 +108,16 @@ require_brew gnu-which --with-default-names
 require_brew gawk
 
 # better, more recent grep
-require_brew grep --with-default-names
+# require_brew grep --with-default-names
 
 # other tools
-require_brew gzip
-require_brew make
-require_brew less
-require_brew openssh
-require_brew rsync
-require_brew unzip
-require_brew file-formula
+# require_brew gzip
+# require_brew make
+# require_brew less
+# require_brew openssh
+# require_brew rsync
+# require_brew unzip
+# require_brew file-formula
 
 # Install Bash 4
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
@@ -152,8 +157,6 @@ require_brew imagemagick
 require_brew imagesnap
 # jq is a JSON grep
 require_brew jq
-# http://maven.apache.org/
-require_brew maven
 require_brew nmap
 # require_brew node
 require_brew nvm
@@ -169,11 +172,6 @@ require_brew vim --override-system-vi
 require_brew watch
 # Install wget with IRI support
 require_brew wget --enable-iri
-
-# Fontconfig, shell and ruby
-require_brew fontconfig
-require_brew zsh
-require_brew ruby
 
 
 # Install composer
@@ -254,6 +252,12 @@ bot "Installing GUI tools via homebrew casks..."
 #require_cask amazon-cloud-drive
 #require_cask box-sync
 #require_cask evernote
+
+# Java and Maven
+require_cask Caskroom/cask/java
+# http://maven.apache.org/
+require_brew maven
+
 require_cask dropbox
 
 # COMMUNICATION
