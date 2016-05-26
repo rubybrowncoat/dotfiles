@@ -55,6 +55,7 @@ if [[ $? != 0 ]]; then
 	action "installing brew-cask"
 	require_brew caskroom/cask/brew-cask
 fi
+brew tap caskroom/versions > /dev/null 2>&1
 ok
 
 ###############################################################################
@@ -169,6 +170,11 @@ require_brew watch
 # Install wget with IRI support
 require_brew wget --enable-iri
 
+# Fontconfig, shell and ruby
+require_brew fontconfig
+require_brew zsh
+require_brew ruby
+
 
 # Install composer
 require_brew composer
@@ -179,9 +185,19 @@ require_brew homebrew/php/php70
 require_brew mariadb
 require_brew mycli
 
+###############################################################################
+bot "Valet..."
+###############################################################################
+
 composer global require laravel/valet
 valet install
+ok
 
+###############################################################################
+bot "Installing fonts..."
+###############################################################################
+
+./fonts/install.sh;ok
 
 # nvm
 require_nvm stable
@@ -218,7 +234,7 @@ require_npm vtop
 ###############################################################################
 bot "Ruby and Ruby Gems..."
 ###############################################################################
-sudo chown -R $(whoami) /Library/Ruby/Gems/2.0.0
+# sudo chown -R $(whoami) /Library/Ruby/Gems/2.0.0
 # require_brew rbenv
 # require_brew ruby-build
 # eval "$(rbenv init -)"
@@ -233,7 +249,6 @@ require_gem scss_lint
 # Native Apps (via brew cask)                                                 #
 ###############################################################################
 bot "Installing GUI tools via homebrew casks..."
-brew tap caskroom/versions > /dev/null 2>&1
 
 # CLOUD STORAGE
 #require_cask amazon-cloud-drive
@@ -265,6 +280,7 @@ require_cask sequel-pro
 # ATOM
 require_cask atom
 
+require_apm editorconfig
 require_apm linter
 require_apm linter-eslint
 require_apm linter-php
@@ -472,8 +488,8 @@ defaults write com.apple.systemuiserver menuExtras -array \
 	"/System/Library/CoreServices/Menu Extras/Clock.menu"
 ok
 
-running "Set highlight color to green"
-defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600";ok
+running "Set highlight color to awesome purple"
+defaults write NSGlobalDomain AppleHighlightColor -string "0.968627 0.831373 1.000000";ok
 
 running "Set sidebar icon size to medium"
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2;ok
