@@ -259,7 +259,7 @@ require_cask gpgtools
 require_cask sizeup
 
 require_cask github-desktop
-require_cask iterm2
+require_cask iterm2-beta
 require_cask sequel-pro
 
 # ATOM
