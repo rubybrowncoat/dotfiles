@@ -46,11 +46,11 @@
     promptWhenFileHasChangedOnDisk: false
   "language-elm":
     autocompleteEnabled: false
-    elmOraclePath: "/Users/browncoat/.dotfiles/.atom/packages/language-elm/node_modules/elm-oracle/bin/elm-oracle"
+    elmOraclePath: "/Users/lucafregoso/.dotfiles/.atom/packages/language-elm/node_modules/elm-oracle/bin/elm-oracle"
   linter:
     showErrorTabLine: true
   "linter-eslint":
-    globalNodePath: "/Users/browncoat/.nvm/versions/node/v5.9.0"
+    globalNodePath: "/Users/lucafregoso/.nvm/versions/node/v6.2.1"
     useGlobalEslint: true
   "linter-htmlhint": {}
   "linter-jshint":
