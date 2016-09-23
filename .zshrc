@@ -29,6 +29,9 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR=~/.nvm
 source /usr/local/opt/nvm/nvm.sh
 
+# Operate thefuck
+eval "$(thefuck --alias)"
+
 # Customize to your needs...
 unsetopt correct
 
