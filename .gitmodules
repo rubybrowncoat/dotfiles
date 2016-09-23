@@ -9,4 +9,4 @@
 	url = https://github.com/kcrawford/dockutil.git
 [submodule "dracula-theme"]
 	path = dracula-theme
-	url = git://github.com/zenorocha/dracula-theme.git
+	url = git://github.com/dracula/dracula-theme.git
