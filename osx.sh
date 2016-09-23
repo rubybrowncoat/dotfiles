@@ -363,11 +363,11 @@ bot "Standard System Changes"
 ###############################################################################
 
 # running "Set computer name (as done via System Preferences → Sharing)"
-running "Set computer name to: serenity"
-sudo scutil --set ComputerName "Serenity Valley"
-sudo scutil --set HostName "serenity"
-sudo scutil --set LocalHostName "SerenityValley"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "serenity"
+running "Set computer name to: s2kmbp"
+sudo scutil --set ComputerName "S2K Luca Fregoso MacBookPro"
+sudo scutil --set HostName "s2kmbp"
+sudo scutil --set LocalHostName "s2kmbp"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "s2kmbp"
 dscacheutil -flushcache
 
 
@@ -492,8 +492,8 @@ defaults write com.apple.systemuiserver menuExtras -array \
 	"/System/Library/CoreServices/Menu Extras/Clock.menu"
 ok
 
-running "Set highlight color to awesome purple"
-defaults write NSGlobalDomain AppleHighlightColor -string "0.968627 0.831373 1.000000";ok
+running "Set highlight color to awesome S2K green"
+defaults write NSGlobalDomain AppleHighlightColor -string "0.772549 0.909804 0.423529";ok
 
 running "Set sidebar icon size to medium"
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2;ok
